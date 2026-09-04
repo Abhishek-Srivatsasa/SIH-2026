@@ -75,7 +75,7 @@
 
 Here is what your actual data flow must look like:
 
-1. Upload & Ingestion
+### 1. Upload & Ingestion
 
 You upload the drone video along with its telemetry file (.SRT or metadata).
 
@@ -83,19 +83,19 @@ The backend extracts frames (e.g., 2–3 frames per second) and synchronizes eac
 
 OpenCV filters out blurry frames so bad data doesn't enter the pipeline.
 
-2. Camera Tracking (COLMAP)
+### 2. Camera Tracking (COLMAP)
 
 COLMAP processes the extracted frames.
 
 Output: Camera poses (where the drone was in 3D space for each frame) and camera intrinsics (focal length, lens distortion).
 
-3. Occlusion & Depth Inference (Depth Anything v2)
+### 3. Occlusion & Depth Inference (Depth Anything v2)
 
 The frames pass through your monocular depth model.
 
 Output: Dense depth maps that predict what the occluded surfaces and blind spots look like.
 
-4. The Core 3DGS Engine (The Step You Skipped)
+### 4. The Core 3DGS Engine (The Step You Skipped)
 
 A dedicated 3D Gaussian Splatting script (or SuGaR) takes three inputs:
 
@@ -109,7 +109,7 @@ It runs an optimization loop that trains millions of 3D Gaussians to match the s
 
 Output: A 3D Gaussian file (usually .ply or .splat).
 
-5. Conversion & Web Viewer
+### 5. Conversion & Web Viewer
 
 The backend converts that .ply file into an optimized, web-ready format like .ksplat.
 
