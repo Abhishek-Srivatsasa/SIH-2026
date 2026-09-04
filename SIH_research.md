@@ -12,6 +12,8 @@
 *   **Hardware Constraint Check:** We must restrict COLMAP to *sparse* reconstruction only; running its dense matching module will bottleneck the HP Victus 15.
 *   **PPT Slide Mapping:** Slide 4: Architecture (Camera Pose Estimation).
 
+*   **Maybe** :https://ieeexplore.ieee.org/abstract/document/10611582/authors#authors 
+
 ### 3. Depth Anything V2 (Monocular Metric Depth Estimation)
 *   **Source:** https://github.com/DepthAnything/Depth-Anything-V2
 *   **Core Concept:** An AI vision model trained on 595K synthetic labeled images and 62M+ real unlabeled images that predicts the absolute depth of pixels from a single RGB frame.
@@ -114,4 +116,7 @@ Output: A 3D Gaussian file (usually .ply or .splat).
 The backend converts that .ply file into an optimized, web-ready format like .ksplat.
 
 The Three.js Gaussian Splat Web Viewer loads that .ksplat file inside the browser for visualization and measurement.
+
+
+
 
