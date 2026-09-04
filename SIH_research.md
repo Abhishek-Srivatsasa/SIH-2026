@@ -73,10 +73,45 @@
 
 ## Things we'll be using for SIH26158 
 
-### COLMAP 
-Extracting Image Details:
-Tracking the Drone's Path:
-Building a Basic 3D Skeleton:
-Making a Solid 3D Structure:
-Feeding Modern AI Systems:
+Here is what your actual data flow must look like:
+
+1. Upload & Ingestion
+
+You upload the drone video along with its telemetry file (.SRT or metadata).
+
+The backend extracts frames (e.g., 2–3 frames per second) and synchronizes each frame with its GPS coordinates.
+
+OpenCV filters out blurry frames so bad data doesn't enter the pipeline.
+
+2. Camera Tracking (COLMAP)
+
+COLMAP processes the extracted frames.
+
+Output: Camera poses (where the drone was in 3D space for each frame) and camera intrinsics (focal length, lens distortion).
+
+3. Occlusion & Depth Inference (Depth Anything v2)
+
+The frames pass through your monocular depth model.
+
+Output: Dense depth maps that predict what the occluded surfaces and blind spots look like.
+
+4. The Core 3DGS Engine (The Step You Skipped)
+
+A dedicated 3D Gaussian Splatting script (or SuGaR) takes three inputs:
+
+The extracted video frames.
+
+The camera poses from COLMAP.
+
+The depth maps from Depth Anything.
+
+It runs an optimization loop that trains millions of 3D Gaussians to match the scene.
+
+Output: A 3D Gaussian file (usually .ply or .splat).
+
+5. Conversion & Web Viewer
+
+The backend converts that .ply file into an optimized, web-ready format like .ksplat.
+
+The Three.js Gaussian Splat Web Viewer loads that .ksplat file inside the browser for visualization and measurement.
 
