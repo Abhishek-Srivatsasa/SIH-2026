@@ -69,3 +69,14 @@
 | **(vi) Near real-time processing** | We bypass slow dense-matching and NeRFs entirely, using sparse SfM and 3DGS for instant rasterization. | Global Pipeline / 3DGS |
 | **(vii) Occluded surfaces** | Monocular Metric Depth Estimation mathematically projects a structural mesh for surfaces hidden from the drone. | AI Depth Prior Generation |
 | **(viii) Metric accuracy w/o GCPs** | COLMAP's `model_aligner` anchors the sparse 3D point cloud strictly to the drone's EXIF GPS/altitude metadata. | Telemetry Sync |
+
+
+## Things we'll be using for SIH26158 
+
+### COLMAP 
+Extracting Image Details:
+Tracking the Drone's Path:
+Building a Basic 3D Skeleton:
+Making a Solid 3D Structure:
+Feeding Modern AI Systems:
+
